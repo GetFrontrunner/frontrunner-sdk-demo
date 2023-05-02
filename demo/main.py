@@ -108,6 +108,13 @@ def get_and_print_orderbook(sdk: FrontrunnerSDK):
     print_orderbooks(response)
 
 
+def print_portfolio(sdk: FrontrunnerSDK):
+    response = sdk.injective.get_account_portfolio()
+    print("portfolio:")
+    for coin in response.portfolio.bank_balances:
+        print("\tcoin:", coin.amount, coin.denom)
+
+
 def main():
     sdk = FrontrunnerSDK()
     # create_wallet(sdk)
@@ -121,6 +128,7 @@ def main():
     print_orders(sdk, "booked")
     print_orders(sdk, "filled")
     # get_and_print_orderbook(sdk)
+    print_portfolio(sdk)
 
 
 if __name__ == "__main__":
