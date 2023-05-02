@@ -45,8 +45,6 @@ def find_and_print_markets(sdk: FrontrunnerSDK):
         print_orderbooks(response)
 
 
-
-
 def submit_orders(sdk: FrontrunnerSDK):
     highest_buy = 0.01
 
@@ -54,6 +52,12 @@ def submit_orders(sdk: FrontrunnerSDK):
         Order.buy_long(INJECTIVE_MARKET_ID, 10, highest_buy + 0.01),
         Order.buy_long(INJECTIVE_MARKET_ID, 5, highest_buy + 0.02),
     ])
+
+    # lowest_ask = 0.40
+    #
+    # response = sdk.injective.create_orders([
+    #     Order.buy_long(INJECTIVE_MARKET_ID, 2, lowest_ask),
+    # ])
 
     print(f"""
     Transaction: {response.transaction}
@@ -109,14 +113,14 @@ def main():
     # create_wallet(sdk)
 
     # find_and_print_markets(sdk)
+    get_and_print_orderbook(sdk)
     # submit_orders(sdk)
-    # time.sleep(1)
     # print_orders(sdk, "booked")
     # cancel_orders(sdk)
-    # time.sleep(2)
     # print_orders(sdk, "canceled")
     print_orders(sdk, "booked")
-    get_and_print_orderbook(sdk)
+    print_orders(sdk, "filled")
+    # get_and_print_orderbook(sdk)
 
 
 if __name__ == "__main__":
