@@ -1,0 +1,12 @@
+.env
+.chain_cookie
+__pycache__
+**/__pycache__
+**/examples.env
+test.py
+
+# IntelliJ
+.idea
+
+# osx
+.DS_Store
